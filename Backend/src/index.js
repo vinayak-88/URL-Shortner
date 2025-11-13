@@ -16,13 +16,16 @@ app.use(
 );
 
 //routes
-app.use(urlRouter);
+app.use("/api", urlRouter);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
+  const distPath = path.join(__dirname, "../../Frontend/dist");
 
-  app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "../../Frontend/dist/index.html"));
+  app.use(express.static(distPath));
+
+  // SPA fallback for React
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
   });
 }
 

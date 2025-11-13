@@ -12,7 +12,7 @@ function Body() {
   const [analyticsLoading, setAnalyticsLoading] = useState(false);
   const [analyticsError, setAnalyticsError] = useState("");
 
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+  const apiUrl = import.meta.env.VITE_API_BASE_URL + "/api";
   const handleShorten = async () => {
     if (!longUrl.trim()) {
       setError("Please enter a valid URL");
