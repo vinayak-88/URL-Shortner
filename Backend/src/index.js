@@ -23,10 +23,6 @@ app.use(errorHandler)
 //connect to DB
 connectDB()
   .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log("server started");
-    });
+    app.listen(process.env.PORT);
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .catch((err) => {});

@@ -13,7 +13,6 @@ function Body() {
   const [analyticsError, setAnalyticsError] = useState("");
 
   const apiUrl = import.meta.env.VITE_API_BASE_URL;
-  console.log("API BASE:", import.meta.env.VITE_API_BASE_URL);
   const handleShorten = async () => {
     if (!longUrl.trim()) {
       setError("Please enter a valid URL");
@@ -51,7 +50,6 @@ function Body() {
       setAnalyticsLoading(true);
       
       const shortId = analyticsShortUrl.split("/").pop();
-      console.log(shortId)
       
       const res = await axios.get(`${apiUrl}/${shortId}/analytics`);
       setAnalyticsData(res.data.data);
