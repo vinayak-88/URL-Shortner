@@ -25,6 +25,9 @@ app.get("/:id", async (req, res, next) => {
   try {
     const shortId = req.params.id;
 
+    //validating user url for security
+    validateShortId(shortId);
+
     const redirectUrl = await shortUrl.findOneAndUpdate(
       { short_url: shortId },
       { $inc: { clicks: 1 } }
