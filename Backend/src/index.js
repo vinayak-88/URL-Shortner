@@ -4,6 +4,7 @@ const { connectDB } = require("./config/database");
 const urlRouter = require("./routes/urlRoute");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler")
+const path = require("path");
 
 const app = express();
 
