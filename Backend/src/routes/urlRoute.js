@@ -32,30 +32,11 @@ urlRouter.post("/url", createUrlLimiter, async (req, res, next) => {
       short_url: shortId,
     });
 
-    res.status(201).json({ shortUrl: `${process.env.FRONTEND_URL}/${shortId}` });
+    res
+      .status(201)
+      .json({ shortUrl: `${process.env.FRONTEND_URL}/${shortId}` });
   } catch (err) {
     next(err);
-  }
-});
-
-urlRouter.get("/:id", createUrlLimiter, async (req, res, next) => {
-  try {
-    const shortId = req.params.id;
-
-    //validating user url for security
-    validateShortId(shortId);
-
-    const redirectUrl = await shortUrl.findOneAndUpdate(
-      { short_url: shortId },
-      { $inc: { clicks: 1 } }
-    );
-    if (!redirectUrl) {
-      res.status(404);
-      throw new Error("Pls enter correct ID");
-    }
-    res.redirect(redirectUrl.full_url);
-  } catch (error) {
-    next(error);
   }
 });
 
