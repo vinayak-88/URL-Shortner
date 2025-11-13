@@ -24,7 +24,11 @@ if (process.env.NODE_ENV === "production") {
 
   app.use(express.static(distPath));
 
-  app.get("*", (req, res) => {
+  // 👇 IMPORTANT: block fallback from catching API routes
+  app.use((req, res, next) => {
+    if (req.path.startsWith("/api")) {
+      return next();
+    }
     res.sendFile(path.join(distPath, "index.html"));
   });
 }
