@@ -24,6 +24,7 @@ app.use("/api", urlRouter);
 app.get("/:id", async (req, res, next) => {
   try {
     const shortId = req.params.id;
+    const SHORTID_REGEX = /^[A-Za-z0-9_-]{8}$/;
 
     if (typeof shortId !== "string" || !SHORTID_REGEX.test(shortId)) {
       return next();
