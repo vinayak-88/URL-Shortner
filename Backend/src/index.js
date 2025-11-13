@@ -20,8 +20,9 @@ app.use(urlRouter);
 
 app.use(express.static(path.join(__dirname, "..", "dist")));
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+
+app.get("/:path*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
 });
 
 //error handling
