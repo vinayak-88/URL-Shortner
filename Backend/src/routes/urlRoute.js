@@ -38,26 +38,6 @@ urlRouter.post("/url", createUrlLimiter, async (req, res, next) => {
   }
 });
 
-urlRouter.get("/:id", createUrlLimiter, async (req, res, next) => {
-  try {
-    const shortId = req.params.id;
-
-    //validating user url for security
-    validateShortId(shortId);
-
-    const redirectUrl = await shortUrl.findOneAndUpdate(
-      { short_url: shortId },
-      { $inc: { clicks: 1 } }
-    );
-    if (!redirectUrl) {
-      res.status(404);
-      throw new Error("Pls enter correct ID");
-    }
-    res.redirect(redirectUrl.full_url);
-  } catch (error) {
-    next(error);
-  }
-});
 
 urlRouter.get("/:id/analytics", createUrlLimiter, async (req, res, next) => {
   try {
