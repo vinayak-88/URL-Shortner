@@ -32,7 +32,7 @@ urlRouter.post("/url", createUrlLimiter, async (req, res, next) => {
       short_url: shortId,
     });
 
-    res.status(201).json({ shortUrl: `${shortId}` });
+    res.status(201).json({ shortUrl: `${process.env.FRONTEND_URL}/${shortId}` });
   } catch (err) {
     next(err);
   }
