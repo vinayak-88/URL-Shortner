@@ -1,5 +1,5 @@
 import Body from "./Components/Body";
-import NotFound from "./Components/NotFound"
+import NotFound from "./Components/NotFound";
 import { Routes, Route } from "react-router-dom";
 
 const App = () => {

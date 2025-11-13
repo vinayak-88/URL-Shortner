@@ -9,7 +9,8 @@ export default function NotFound() {
           Page Not Found
         </h2>
         <p className="text-gray-600 mb-6 text-sm">
-          The link you followed may be broken, or the page might have been removed.
+          The link you followed may be broken, or the page might have been
+          removed.
         </p>
 
         <Link
