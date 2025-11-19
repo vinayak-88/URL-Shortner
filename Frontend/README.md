@@ -1,18 +1,80 @@
-# React + Vite
+# URL Shortener - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the React frontend for the URL Shortener application, built with Vite and styled with Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+- Node.js (v18+)
+- Backend API running on `http://localhost:3000`
 
-## React Compiler
+### Installation
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+```bash
+npm install
+```
 
-Note: This will impact Vite dev & build performances.
+### Development
 
-## Expanding the ESLint configuration
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The application will start on `http://localhost:5173`
+
+### Build
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` folder.
+
+## 📁 Project Structure
+
+```
+src/
+├── main.jsx              # Entry point
+├── App.jsx               # Main component
+├── index.css             # Global styles
+└── Components/
+    ├── Body.jsx          # Main UI with Shorten & Analytics tabs
+    └── NotFound.jsx      # 404 page
+```
+
+## 🎨 Features
+
+### Shorten Tab
+- Paste long URLs and get shortened versions
+- Automatic error handling
+- One-click shortening
+
+### Analytics Tab
+- Enter a short URL to view statistics
+- See total clicks, creation date, and more
+- Real-time data from backend
+
+## 🔧 Configuration
+
+The frontend uses environment variables from the root `.env` file:
+
+```env
+VITE_API_BASE_URL=http://localhost:3000
+```
+
+## 📦 Dependencies
+
+- **React** - UI library with React Compiler enabled
+- **Vite** - Fast build tool
+- **Axios** - HTTP client for API requests
+- **Tailwind CSS** - Utility-first CSS framework
+- **ESLint** - Code quality and style checking
+
+## 🚀 Production Build
+
+```bash
+npm run build
+```
+
+The built files in `dist/` are served by the backend when running in production mode.
+
